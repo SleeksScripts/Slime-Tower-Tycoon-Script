@@ -1,0 +1,340 @@
+if game.PlaceId == 10675066724 then
+	
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "VIPER HUB", HidePremium = false, IntroText = "VIPER HUB", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+--values
+
+
+
+getgenv().oneSlime = true
+getgenv().slimeFast = true
+getgenv().fiveSlime = true
+getgenv().autoMerge = true
+getgenv().slowMerge = true
+getgenv().autoDep = true
+getgenv().depSlow = true
+getgenv().buyRate = true
+getgenv().slowRate = true
+getgenv().autoDrops = true
+getgenv().slowDrops = true
+getgenv().autoB = true
+
+
+--functions 
+
+--SLIMES
+function oneSlime()
+   while  getgenv().oneSlime == true do
+local ohNumber1 = 1
+
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuyDropper:FireServer(ohNumber1)
+                wait()
+   end
+
+end
+
+
+function slimeFast()
+    while  getgenv().slimeFast == true do
+ local ohNumber1 = 1
+ 
+ game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuyDropper:FireServer(ohNumber1)
+                 wait(1)
+    end
+ 
+ end
+ 
+--SLIMES
+
+
+--DepositDrops
+function autoDep()
+    while getgenv().autoDep == true do
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.DepositDrops:FireServer()
+                wait()
+    end 
+end
+
+function depSlow()
+    while getgenv().depSlow == true do
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.DepositDrops:FireServer()
+                wait(1)
+    end 
+end
+
+--DepositDrops
+
+--AUTORATE
+
+function buyRate()
+    while getgenv().buyRate == true do
+local ohNumber1 = 1
+
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuySpeed:FireServer(ohNumber1)
+            wait()
+
+    end
+
+end
+
+
+function slowRate()
+    while getgenv().slowRate == true do
+local ohNumber1 = 1
+
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuySpeed:FireServer(ohNumber1)
+            wait(1)
+
+    end
+
+end
+--AUTORATE
+
+--AUTOMERGE
+function autoMerge()
+    while getgenv().autoMerge == true do
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.MergeDroppers:FireServer()
+                wait()
+    end
+
+end
+
+function slowMerge()
+    while getgenv().slowMerge == true do
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.MergeDroppers:FireServer()
+                wait(1)
+    end
+
+end
+--AUTOMERGE
+
+
+--AUTODROPS
+function autoDrops()
+    while getgenv().autoDrops == true do
+local ohNumber1 = 1
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait()
+local ohNumber1 = 4
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait()
+local ohNumber1 = 18
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait()
+    end
+end
+
+
+
+
+
+
+function slowDrops()
+    while getgenv().slowDrops == true do
+local ohNumber1 = 1
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait(0.5)
+local ohNumber1 = 4
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait(0.5)
+local ohNumber1 = 18
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+            wait(0.5)
+    end
+end
+
+
+
+
+
+function autoB()
+    while getgenv().autoB == true do
+game:GetService("ReplicatedStorage").GTycoonClient.Remotes.FinishObby:FireServer()
+            wait(10)
+    end
+end
+
+
+
+
+
+--Toggles/Sections
+
+local Tab = Window:MakeTab({
+	Name = "AutoSlimes",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddLabel("AutoSlimes")
+
+
+Tab:AddToggle({
+	Name = "Auto Buy One Slime (QUICK)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().oneSlime = Value
+            oneSlime()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Buy One Slime (SLOW)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().slimeFast = Value
+            slimeFast()
+	end    
+})
+
+
+Tab:AddLabel("MergeSlimes")
+
+Tab:AddToggle({
+	Name = "Auto Merge Slimes (QUICK)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoMerge = Value
+            autoMerge()
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Merge Slimes (SLOW)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().slowMerge = Value
+            slowMerge()
+	end    
+})
+
+
+
+
+local Tab = Window:MakeTab({
+	Name = "AutoDeposit",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Deposit"
+})
+
+
+Tab:AddToggle({
+	Name = "Start Deposting Slimes (QUICK)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoDep = Value
+            autoDep()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Start Deposting Slimes (SLOW)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().depSlow = Value
+            depSlow()
+	end    
+})
+
+
+
+local Tab = Window:MakeTab({
+	Name = "AutoRate",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Rate"
+})
+
+Tab:AddToggle({
+	Name = "Auto Buy Rate (QUICK)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().buyRate = Value
+            buyRate()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Buy Rate (SLOW)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().slowRate = Value
+            slowRate()
+	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "AutoDrops",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = Tab:AddSection({
+	Name = "Collect Drops"
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Collect Drops (QUICK)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoDrops = Value
+            autoDrops()
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Collect Drops (SLOW)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().slowDrops = Value
+            slowDrops()
+	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "Auto Obby",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoB = Value
+            autoB()
+	end    
+})
+
+OrionLib:Init()
+
+else
+
+	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+
+	OrionLib:MakeNotification({
+		Name = "Script",
+		Content = "WrongGame!",
+		Image = "rbxassetid://4483345998",
+		Time = 5
+	})
+	
+
+	OrionLib:Init()
+end
+
